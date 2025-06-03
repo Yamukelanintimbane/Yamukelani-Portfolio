@@ -1,69 +1,50 @@
-// Mobile menu toggle functionality
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-        
-menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-        
-// Close menu when a link is clicked (for mobile)
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        });
-    });
-        
-    
-// Portfolio Filtering
+    // Taskbar/Dock functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-
-// Update active button
-filterButtons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-
-// Filter items
-const filterValue = button.getAttribute('data-filter');
-portfolioItems.forEach(item => {
-    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-        item.style.display = 'block';
+    const dockItems = document.querySelectorAll('.dock-item');
+    const dockContainer = document.querySelector('.dock-container');
+    
+    // Set active item based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    dockItems.forEach(item => {
+        const href = item.getAttribute('href').split('/').pop();
+        if (href === currentPage) {
+            item.classList.add('active');
         } else {
-            item.style.display = 'none';
-            }
+            item.classList.remove('active');
+        }
+    });
+    
+    // Dock hover effect
+    dockContainer.addEventListener('mouseenter', () => {
+        dockContainer.style.height = '70px';
+        dockContainer.style.padding = '12px';
+    });
+    
+    dockContainer.addEventListener('mouseleave', () => {
+        dockContainer.style.height = '60px';
+        dockContainer.style.padding = '8px';
+    });
+    
+    // Magnify adjacent icons on hover (like macOS)
+    dockItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const index = Array.from(dockItems).indexOf(item);
+            
+            dockItems.forEach((otherItem, otherIndex) => {
+                const distance = Math.abs(index - otherIndex);
+                if (distance <= 2 && distance > 0) {
+                    const scale = 1 + (0.1 / distance);
+                    otherItem.style.transform = `scale(${scale}) translateY(-${5 * (1/distance)}px)`;
+                }
+            });
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            dockItems.forEach(otherItem => {
+                if (!otherItem.classList.contains('active')) {
+                    otherItem.style.transform = 'scale(1) translateY(0)';
+                }
             });
         });
     });
 });
-
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const form = e.target;
-  const status = document.getElementById('form-status');
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalBtnText = submitBtn.textContent;
-
-  // Show loading state
-  submitBtn.textContent = 'Sending...';
-  submitBtn.disabled = true;
-  status.innerHTML = '';
-
-  emailjs.sendForm('service_u6e4o5m', 'template_ebhnn5b', form)
-    .then(() => {
-      status.innerHTML = '<p class="success">Message sent successfully!</p>';
-      form.reset();
-    })
-    .catch((error) => {
-      status.innerHTML = `<p class="error">Error: ${error.text}</p>`;
-    })
-    .finally(() => {
-      submitBtn.textContent = originalBtnText;
-      submitBtn.disabled = false;
-    });
-});
-// Update copyright year automatically
-document.getElementById('year').textContent = new Date().getFullYear();
-
