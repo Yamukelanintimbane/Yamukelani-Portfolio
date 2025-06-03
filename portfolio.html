@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yamkelani Ntimbane | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- NAVIGATION SECTION -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">Yamkelani<span> Ntimbane</span></a>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- PORTFOLIO SECTION -->
+    <div class="portfolio-container">
+        <!-- Item 1 (Right) -->
+        <div class="portfolio-item">
+            <div class="portfolio-image">
+                <img src="images/project1.png" alt="LuxAura Scents">
+            </div>
+            <div class="portfolio-content">
+                <h3>LuxAura Scents</h3>
+                <p>This is the project I worked on in August 2024. This was a Shopify e-Commerce store whose main purpose was to make it easier for perfume lovers to purchase perfumes online at very affordable prices.</p>
+                <div class="portfolio-tags">
+                    <span class="tag">Shopify</span>
+                    <span class="tag">e-Commerce</span>
+                    <span class="tag">UI Design</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Item 2 (Left) -->
+        <div class="portfolio-item">
+            <div class="portfolio-image">
+                <img src="images/project2.jpg" alt="YamuDrive">
+            </div>
+            <div class="portfolio-content">
+                <h3>YamuDrive</h3>
+                <p>A PDF management and sharing platform with cloud storage capabilities. This project was designed to simplify document handling for students and professionals alike.</p>
+                <div class="portfolio-tags">
+                    <span class="tag">Web Development</span>
+                    <span class="tag">Cloud Storage</span>
+                    <span class="tag">PDF Tools</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Item 3 (Right) -->
+        <div class="portfolio-item">
+            <div class="portfolio-image">
+                <img src="images/project3.png" alt="SuperheroApp">
+            </div>
+            <div class="portfolio-content">
+                <h3>SuperheroApp</h3>
+                <p>An interactive superhero database created as a school project. This application features API integration and provides detailed information about various superheroes.</p>
+                <div class="portfolio-tags">
+                    <span class="tag">School Project</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">API Integration</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="#">Yamkelani<span>Ntimbane</span></a>
+            </div>
+            
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-social">
+                <a href="https://web.facebook.com/yamkelanintimbane.yumyum" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="mailto:Yamukelanintimbane@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Yamkelani Ntimbane. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Simple mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
